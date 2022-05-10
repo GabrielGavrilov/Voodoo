@@ -1,0 +1,24 @@
+{
+  "name": "voodoo",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielGavrilov/voodoo.git"
+  },
+  "author": "Gabriel Gavrilov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielGavrilov/voodoo/issues"
+  },
+  "homepage": "https://github.com/GabrielGavrilov/voodoo#readme",
+  "dependencies": {
+    "dotconfigure": "^2.0.1",
+    "ejs": "^3.1.7",
+    "express": "^4.18.1"
+  }
+}
