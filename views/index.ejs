@@ -20,12 +20,12 @@
                     <p class="max-file-upload">Uploads up to 200 MB are allowed. You should read the FAQ</p>
                 </div>
                 <div class="file-upload-form-content">
-                    <form>
+                    <form action="/files/upload" method="post" enctype="multipart/form-data">
                         <div class="file-upload-content">
                             <label for="file-upload" class="custom-file-upload">
                                 Select or drop files
                             </label>
-                            <input class="file-upload" required type="file"/>
+                            <input id="file-upload" required name="FILE_UPLOAD" type="file"/>
                         </div>
                         <div class="divider-div"></div>
                         <div class="upload-file-btn-content">
