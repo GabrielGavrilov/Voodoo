@@ -10,10 +10,11 @@ const multer = require('multer');
 const bodyParser = require("body-parser")
 const path = require('path');
 
-const filesRoute = require("./routes/files.routes")
+const uploadRoute = require("./routes/upload.route")
+const fileRoute = require("./routes/file.route")
 
 /*
-    MIDDLEWARE
+    MIDDLE WARE
 */
 
 const server = express();
@@ -38,7 +39,8 @@ server.set('views', path.join(__dirname, 'views'))
     EXTERNAL ROUTES
 */
 
-server.use("/files/", filesRoute)
+server.use("/", uploadRoute)
+server.use("/file/", fileRoute)
 
 /*
     STATIC ROUTES
