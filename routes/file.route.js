@@ -11,9 +11,13 @@ router.get("/:id", (req, res)=> {
         if(!data) {
             res.redirect('/')
         } else {
+
+            const mimetype = data.file.contentType.split("/")
+
             res.render("file.ejs", {
                 pageTitle: id,
-                image: data
+                data: data,
+                fileMimetype: mimetype[0]
             });
         }
     })

@@ -4,11 +4,17 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="/css/file.css">
-        <title><%= pageTitle %>></title>
+        <title><%= pageTitle %></title>
     </head>
     <body>
         <div class="file">
-            <img src="data:image/<%= image.img.contentType %>;base64, <%= image.img.data.toString('base64') %>">
+        <% if(fileMimetype == "image") { %>
+            <img src="data:data/<%= data.file.contentType %>;base64, <%= data.file.data.toString('base64') %>">
+        <% } else if(fileMimetype == "video") { %>
+            <video width="1080" height="720" controls>
+                <source src="data:data/<%= data.file.contentType %>;base64, <%= data.file.data.toString('base64') %>" type="video/mp4">
+            </video>
+        <% } %>
         </div>
     </body>
 </html>
