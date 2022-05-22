@@ -57,6 +57,6 @@ server.get('/', (req, res)=> {
 server.listen(config.SERVER_PORT, config.SERVER_HOST, (err)=> {
     if(err) throw err;
     console.log("Voodoo Hosting - v1.0.0");
-    console.log("--------------------------------------");
+    console.log("---------------------------------------------");
     console.log("> Server is up and running.")
 })
