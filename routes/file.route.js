@@ -6,7 +6,7 @@ router.get("/:id", (req, res)=> {
 
     const id = req.params.id
 
-    Files.findOne({"_id": id}, (err, data)=> {
+    Files.findOne({"file_id": id}, (err, data)=> {
         if(err) throw err;
         if(!data) {
             res.redirect('/')

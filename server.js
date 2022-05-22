@@ -25,7 +25,7 @@ mongoose.connect("mongodb+srv://gabby:winter22@personaldatabase.wqq3m.mongodb.ne
 }, (err)=> {
     if(err) throw err;
     else {
-        console.log("Server successfully connected to the database.")
+        console.log("> Server successfully connected to the database.")
     }
 })
 
@@ -56,5 +56,7 @@ server.get('/', (req, res)=> {
 
 server.listen(config.SERVER_PORT, config.SERVER_HOST, (err)=> {
     if(err) throw err;
-    console.log(`Server is listening @ port ${config.SERVER_PORT}`);
+    console.log("Voodoo Hosting - v1.0.0");
+    console.log("--------------------------------------");
+    console.log("> Server is up and running.")
 })

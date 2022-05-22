@@ -20,22 +20,30 @@ const fileUpload = multer({
 })
 
 router.post('/upload', fileUpload.single('FILE_UPLOAD'), (req, res)=> {
-    
+    const numbGen = Math.floor(Math.random() * 99999999) + 10000000
     if(req.fileValidationError) {
         res.redirect('/')
     }
 
     const file = new Files({
-        img: {
+        file: {
             data: fs.readFileSync(path.join('./uploads/' + req.file.filename)),
             contentType: req.file.mimetype
-        }
+        },
+        file_id: numbGen
     })
 
     file.save((err)=> {
         if(err) throw err;
-        console.log("new file has been uploaded")
-        res.redirect('/')
+        console.log("> " + req.ip + " has uploaded: " + req.file.originalname)
+        Files.findOne({"file_id": numbGen}, (err, data) => {
+            if(err) throw err
+            if(!data) {
+                res.redirect('/')
+            } else {
+                res.redirect('/file/' + data.file_id)
+            }
+        })
     })
 
 })
