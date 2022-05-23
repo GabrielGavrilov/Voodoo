@@ -46,8 +46,20 @@ server.use("/file/", fileRoute)
     STATIC ROUTES
 */
 
-server.get('/', (req, res)=> {
-    res.render('index.ejs')
+server.get("/", (req, res)=> {
+    res.render("index.ejs")
+})
+
+server.get("/faq", (req, res)=> {
+    res.render("faq.ejs")
+})
+
+server.get("/tos", (req, res)=> {
+    res.render("tos.ejs")
+})
+
+server.get("/contact", (req, res)=> {
+    res.render("contact.ejs")
 })
 
 /*
