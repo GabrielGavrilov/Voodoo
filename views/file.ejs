@@ -9,7 +9,7 @@
     <body>
         <div class="file">
         <% if(fileMimetype == "image") { %>
-            <img src="data:data/<%= data.file.contentType %>;base64, <%= data.file.data.toString('base64') %>">
+            <img class="image-style" src="data:data/<%= data.file.contentType %>;base64, <%= data.file.data.toString('base64') %>">
         <% } else if(fileMimetype == "video") { %>
             <video width="1080" height="720" controls>
                 <source src="data:data/<%= data.file.contentType %>;base64, <%= data.file.data.toString('base64') %>" type="video/mp4">
