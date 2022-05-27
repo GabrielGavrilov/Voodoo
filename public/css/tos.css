@@ -1,0 +1,46 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: 0px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-content-background {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    width: 750px;
+    height: 100%;
+    color: white;
+}
+
+.tos-header {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 70px;
+    font-weight: bold;
+    padding-bottom: 50px;
+}
+
+.terms-of-service-content {
+    width: 100%;
+    background-color: #212121;
+    border-radius: 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.terms {
+    margin-left: 20px;
+    margin-right: 20px;
+}
