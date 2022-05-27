@@ -5,7 +5,8 @@ const fileSchema = new mongoose.Schema({
         data: Buffer,
         contentType: String
     },
-    file_id: Number
+    file_id: Number,
+    uploader_ip: String
 }, {timestamps: true})
 
 const fileModel = new mongoose.model('file', fileSchema);

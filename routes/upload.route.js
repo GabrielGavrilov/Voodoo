@@ -30,7 +30,8 @@ router.post('/upload', fileUpload.single('FILE_UPLOAD'), (req, res)=> {
             data: fs.readFileSync(path.join('./uploads/' + req.file.filename)),
             contentType: req.file.mimetype
         },
-        file_id: numbGen
+        file_id: numbGen,
+        uploader_ip: req.ip
     })
 
     file.save((err)=> {
