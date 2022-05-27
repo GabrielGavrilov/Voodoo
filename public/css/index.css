@@ -115,3 +115,24 @@ input[type="file"] {
     text-decoration: none;
     color: #8C3D96;
 }
+
+.stats-content {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats-div {
+    width: 60%;
+    height: 50px;
+    border-radius: 8px;
+    background-color: #212121;
+    border: 1px solid #342877;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: large;
+}

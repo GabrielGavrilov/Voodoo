@@ -5,7 +5,7 @@ const multer = require("multer");
 const fs = require('fs')
 const path = require("path")
 const Files = require("../models/files.model");
-const { type } = require("express/lib/response");
+const Stats = require("../models/stats.model")
 
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -17,7 +17,14 @@ const fileStorage = multer.diskStorage({
 })
 
 const fileUpload = multer({
-    storage: fileStorage
+    storage: fileStorage,
+    fileFilter: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        if(ext != '.png' && ext != '.jpg' && ext != '.jpeg' && ext != '.webp' && ext != '.webm' && ext != '.mpv' && ext != '.ogg' && ext != '.mp4' && ext != '.avi' && ext != '.mov') {
+            return cb(new Error("File format not supported."))
+        }
+        cb(null, true);
+    }
 })
 
 router.post('/upload', fileUpload.single('FILE_UPLOAD'), (req, res)=> {
@@ -28,34 +35,29 @@ router.post('/upload', fileUpload.single('FILE_UPLOAD'), (req, res)=> {
         res.redirect('/')
     }
 
-    if(mimetype[0] !== "image" || mimetype[0] !== "video") {
-        res.redirect("/")
-        console.log(`> cannot upload ${mimetype[0]}`)
-    } else {
 
-        const file = new Files({
-            file: {
-                data: fs.readFileSync(path.join('./uploads/' + req.file.filename)),
-                contentType: req.file.mimetype
-            },
-            file_id: numbGen,
-            uploader_ip: req.ip
-        })
+    const file = new Files({
+       file: {
+            data: fs.readFileSync(path.join('./uploads/' + req.file.filename)),
+            contentType: req.file.mimetype
+        },
+        file_id: numbGen,
+        uploader_ip: req.ip
+    })
     
-        file.save((err)=> {
-            if(err) throw err;
-            console.log("> " + req.ip + " has uploaded: " + req.file.originalname)
-            Files.findOne({"file_id": numbGen}, (err, data) => {
-                if(err) throw err
-                if(!data) {
-                    res.redirect('/')
-                } else {
-                    res.redirect('/file/' + data.file_id)
-                }
-            })
+    file.save((err)=> {
+        if(err) throw err;
+        console.log("> " + req.ip + " has uploaded: " + req.file.originalname)
+        Files.findOne({"file_id": numbGen}, (err, data) => {
+            if(err) throw err
+            if(!data) {
+                res.redirect('/')
+            } else {
+                res.redirect('/file/' + data.file_id)
+            }
         })
+    })
 
-    }
 
 })
 
